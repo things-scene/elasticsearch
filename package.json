@@ -1,0 +1,19 @@
+{
+  "name": "@things-scene/elasticsearch",
+  "description": "elasticsearch component for things-scene",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "author": "heartyoh",
+  "scripts": {
+    "serve": "things-shell"
+  },
+  "things-scene": true,
+  "dependencies": {
+    "@hatiolab/things-shell": "*",
+    "@things-scene/form": "*",
+    "@things-scene/random": "*",
+    "@things-scene/restful": "*",
+    "@things-scene/table": "*",
+    "elasticsearch": "^14.2.1"
+  }
+}
