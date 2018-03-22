@@ -1,0 +1,56 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "type": "model-layer",
+  "translate": {
+    "x": 0,
+    "y": 245.96875
+  },
+  "scale": {
+    "x": 0.24635416666666668,
+    "y": 0.24635416666666668
+  },
+  "components": [
+    {
+      "type": "elasticsearch",
+      "xx": 0,
+      "host": "localhost",
+      "port": 9200,
+      "left": 400.66894270777766,
+      "top": 213.62744052064448,
+      "width": 100,
+      "height": 100,
+      "rotation": 0,
+      "index": "vendor",
+      "q": "102",
+      "mappings": [
+        {
+          "rule": "value",
+          "target": "#logger",
+          "property": "value",
+          "accessor": "hits[0]._source[page]"
+        }
+      ],
+      "queryObject": "{\n  query: {\n    match_all: {}\n  }\n}"
+    },
+    {
+      "type": "textarea",
+      "xx": 0,
+      "top": 213.28638497652582,
+      "left": 807.981220657277,
+      "width": 551.6431924882628,
+      "height": 455.16431924882636,
+      "paddingLeft": 7,
+      "paddingRight": 7,
+      "fontSize": 40,
+      "fillStyle": "white",
+      "fontColor": "#585858",
+      "strokeStyle": "rgba(0,0,0,.4)",
+      "lineWidth": 1,
+      "lineDash": "solid",
+      "textAlign": "left",
+      "rotation": 0,
+      "id": "logger"
+    }
+  ]
+}

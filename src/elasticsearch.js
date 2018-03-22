@@ -4,8 +4,8 @@
 
 import COMPONENT_IMAGE from './elasticsearch.png';
 
-import { Component, DataSource, RectPath, Shape } from '@hatiolab/things-scene'
-import elasticsearch from 'elasticsearch';
+import { Component, DataSource, RectPath, Shape, error } from '@hatiolab/things-scene'
+import elasticsearch from 'elasticsearch-browser';
 
 const NATURE = {
   mutable: false,
@@ -21,6 +21,22 @@ const NATURE = {
     name: 'port',
     placeholder: '9200'
   }, {
+    type: 'string',
+    label: 'httpAuth',
+    name: 'httpAuth'
+  }, {
+    type: 'string',
+    label: 'index',
+    name: 'index'
+  }, {
+    type: 'string',
+    label: 'query-string',
+    name: 'queryString'
+  }, {
+    type: 'textarea',
+    label: 'query-object',
+    name: 'queryObject'
+  }, {
     type: 'select',
     label: 'log',
     name: 'log',
@@ -34,19 +50,6 @@ const NATURE = {
       }, {
         display: 'warn',
         value: 'warn'
-      }]
-    }
-  }, {
-    type: 'select',
-    label: 'role',
-    name: 'role',
-    property: {
-      options: [{
-        display: 'Subscriber',
-        value: 'subscriber'
-      }, {
-        display: 'Publisher',
-        value: 'publisher'
       }]
     }
   }, {
@@ -87,18 +90,16 @@ export default class Elasticsearch extends DataSource(RectPath(Shape)) {
 
   _initElasticsearchConnection() {
 
-    try {
-      this._client && this._client.end(true, () => { });
-    } catch (e) {
-      console.error(e)
-    }
     delete this._client;
 
     var {
       host,
       port = 9200,
       log = 'trace',
-      query
+      index,
+      queryString,
+      queryObject,
+      httpAuth
     } = this.model;
 
     if (!host) {
@@ -106,20 +107,53 @@ export default class Elasticsearch extends DataSource(RectPath(Shape)) {
       return;
     }
 
-    var client = new elasticsearch.Client({
+    this._client = new elasticsearch.Client({
       host: `${host}:${port}`,
+      httpAuth,
       log
     });
 
-    this._client = client;
+    var query = {};
+    if (queryString) {
+      query.q = queryString;
+    } else if (queryObject) {
+      try {
+        let obj;
+        eval('obj=' + queryObject);
+        if (obj && typeof (obj) == 'object') {
+          query.body = obj;
+        } else {
+          error('query object is not an object', obj, queryObject);
+          return;
+        }
+      } catch (e) {
+        error(e);
+        return;
+      }
+    } else {
+      return;
+    }
+
+    if (index) {
+      query.index = index;
+    }
+
+    this._interval = setInterval(() => {
+
+      this._client.search(query, (e, response, code) => {
+        if (e) {
+          error(e, response, code);
+        } else {
+          this.setState('data', response.hits);
+        }
+      });
+    }, 2000);
   }
 
   dispose() {
-    try {
-      this._client && this._client.end(true, () => { });
-    } catch (e) {
-      console.error(e)
-    }
+    if (this._interval)
+      clearInterval(this._interval);
+
     delete this._client;
 
     super.dispose()
@@ -140,25 +174,6 @@ export default class Elasticsearch extends DataSource(RectPath(Shape)) {
 
     context.beginPath();
     context.drawImage(Elasticsearch.image, left, top, width, height);
-  }
-
-  onchangeData(data, before) {
-    super.onchangeData(data, before);
-
-    // const {
-    //   topic,
-    //   role = 'subscriber'
-    // } = this.model;
-
-    // if (!this._client || !this._client.connected) {
-    //   return;
-    // }
-
-    // if (role == 'subscriber') {
-    //   return;
-    // }
-
-    // this._client.publish(topic, JSON.stringify(data.data), { qos: 0, retain: false })
   }
 
   get nature() {
