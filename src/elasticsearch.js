@@ -30,6 +30,10 @@ const NATURE = {
     name: 'index'
   }, {
     type: 'string',
+    label: 'types',
+    name: 'types'
+  }, {
+    type: 'string',
     label: 'query-string',
     name: 'queryString'
   }, {
@@ -50,19 +54,6 @@ const NATURE = {
       }, {
         display: 'warn',
         value: 'warn'
-      }]
-    }
-  }, {
-    type: 'select',
-    label: 'data-format',
-    name: 'dataFormat',
-    property: {
-      options: [{
-        display: 'Plain Text',
-        value: 'text'
-      }, {
-        display: 'JSON',
-        value: 'json'
       }]
     }
   }]
@@ -97,6 +88,7 @@ export default class Elasticsearch extends DataSource(RectPath(Shape)) {
       port = 9200,
       log = 'trace',
       index,
+      types,
       queryString,
       queryObject,
       httpAuth
@@ -136,6 +128,10 @@ export default class Elasticsearch extends DataSource(RectPath(Shape)) {
 
     if (index) {
       query.index = index;
+    }
+
+    if (types) {
+      query.types = types;
     }
 
     this._interval = setInterval(() => {
