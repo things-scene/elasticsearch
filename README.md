@@ -4,7 +4,7 @@ $ yarn
 $ yarn serve
 ```
 * yarn 으로 설치한 후, yarn serve 를 실행하면 로컬서버가 실행된다.
-* 브라우저(크롬, 사파리, 파이어폭스)을 열어서 다음 URL로 접속한다.
+* 브라우저(Chrome, Opera, ~~Safari~~, ~~Firefox~~)을 열어서 다음 URL로 접속한다.
 ```
 http://0.0.0.0:3001
 ```
