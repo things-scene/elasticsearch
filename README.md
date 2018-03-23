@@ -1,3 +1,13 @@
+# Installation
+```
+$ yarn
+$ yarn serve
+```
+* yarn 으로 설치한 후, yarn serve 를 실행하면 로컬서버가 실행된다.
+* 브라우저(크롬, 사파리, 파이어폭스)을 열어서 다음 URL로 접속한다.
+```
+http://0.0.0.0:3001
+```
 # Things Scene을 위한 ElasticSearch 데이타소스 컴포넌트
 ## 개념
 * ElasticSearch REST API를 이용해서 주기적으로 Search Query를 실행하면서, 데이터를 수집한다.
