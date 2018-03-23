@@ -4,11 +4,11 @@
   "type": "model-layer",
   "translate": {
     "x": 0,
-    "y": 245.96875
+    "y": 200.96875
   },
   "scale": {
-    "x": 0.24635416666666668,
-    "y": 0.24635416666666668
+    "x": 0.49635416666666665,
+    "y": 0.49635416666666665
   },
   "components": [
     {
@@ -50,7 +50,8 @@
       "lineDash": "solid",
       "textAlign": "left",
       "rotation": 0,
-      "id": "logger"
+      "id": "logger",
+      "text": "ElasticSearch에서 search된 데이타의 첫번째 page값이 보일거임."
     }
   ]
 }
