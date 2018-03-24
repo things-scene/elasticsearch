@@ -56,6 +56,11 @@ const NATURE = {
         value: 'warn'
       }]
     }
+  }, {
+    type: 'number',
+    label: 'period',
+    name: 'period',
+    placeholder: 'seconds'
   }]
 }
 
@@ -143,7 +148,7 @@ export default class Elasticsearch extends DataSource(RectPath(Shape)) {
           this.setState('data', response.hits);
         }
       });
-    }, 2000);
+    }, this.period);
   }
 
   dispose() {
@@ -170,6 +175,10 @@ export default class Elasticsearch extends DataSource(RectPath(Shape)) {
 
     context.beginPath();
     context.drawImage(Elasticsearch.image, left, top, width, height);
+  }
+
+  get period() {
+    return (this.state.period || 10) * 1000;
   }
 
   get nature() {

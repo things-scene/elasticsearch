@@ -8,7 +8,8 @@ export default {
     'label.types': 'types',
     'label.query-string': 'query string',
     'label.query-object': 'query object',
-    'label.log': 'log'
+    'label.log': 'log',
+    'label.period': 'period'
   },
   'ko-KR': {
     'keyword': '키워드',
@@ -19,7 +20,8 @@ export default {
     'label.types': 'types',
     'label.query-string': '단순질의(q)',
     'label.query-object': '질의객체(body)',
-    'label.log': 'log'
+    'label.log': 'log',
+    'label.period': '주기'
   },
   'zh-CN': {
     'keyword': 'keyword',
@@ -30,6 +32,7 @@ export default {
     'label.types': 'types',
     'label.query-string': 'query string',
     'label.query-object': 'query object',
-    'label.log': 'log'
+    'label.log': 'log',
+    'label.period': 'period'
   }
 }

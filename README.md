@@ -41,6 +41,7 @@ $ brew services start elasticsearch
 * queryString : simple query string (ex. user:kimchy)
 * queryObject : query object (ex. {query: {match_all: {}}})
 * log : log level [trace | error | warn]
+* period: search repeat period
 ```
 queryString 이 설정되어있으면, queryString을 search 조건에 사용하며,
 queryString이 설정되지 않고 queryObject가 설정되어있으면,
