@@ -1,19 +1,25 @@
 {
   "name": "@things-scene/elasticsearch",
   "description": "elasticsearch component for things-scene",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "main": "src/index.js",
   "author": "heartyoh",
   "scripts": {
-    "serve": "things-shell"
+    "serve": "things-shell",
+    "serve:dev": "things-shell-dev",
+    "build": "webpack",
+    "prepublish": "webpack"
   },
   "things-scene": true,
-  "dependencies": {
+  "devDependencies": {
     "@hatiolab/things-shell": "*",
     "@things-scene/form": "*",
     "@things-scene/random": "*",
     "@things-scene/restful": "*",
-    "@things-scene/table": "*",
+    "@things-scene/table": "*"
+  },
+  "dependencies": {
+    "@hatiolab/things-shell": "*",
     "elasticsearch-browser": "^14.2.1"
   }
 }
