@@ -160,7 +160,7 @@ export default class Elasticsearch extends DataSource(RectPath(Shape)) {
     super.dispose()
   }
 
-  _draw(context) {
+  render(context) {
 
     /*
      * TODO role이 publisher 인지 subscriber 인지에 따라서 구분할 수 있는 표시를 추가할 것.
