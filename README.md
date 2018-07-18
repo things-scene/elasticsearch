@@ -1,12 +1,12 @@
 # Installation
 ```
 $ yarn
-$ yarn serve
+$ yarn serve:dev
 ```
-* yarn 으로 설치한 후, yarn serve 를 실행하면 로컬서버가 실행된다.
+* yarn 으로 설치한 후, yarn serve:dev 를 실행하면 로컬서버가 실행된다.
 * 브라우저(Chrome, Opera, ~~Safari~~, ~~Firefox~~)을 열어서 다음 URL로 접속한다.
 ```
-http://0.0.0.0:3001
+http://0.0.0.0:3000
 ```
 # Things Scene을 위한 ElasticSearch 데이타소스 컴포넌트
 ## 개념
