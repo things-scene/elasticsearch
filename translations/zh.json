@@ -1,0 +1,12 @@
+{
+  "keyword": "keyword",
+  "label.host": "host",
+  "label.port": "port",
+  "label.httpAuth": "http-auth",
+  "label.index": "index",
+  "label.types": "types",
+  "label.query-string": "query string",
+  "label.query-object": "query object",
+  "label.log": "log",
+  "label.period": "period"
+}
