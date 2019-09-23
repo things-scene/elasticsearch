@@ -1,0 +1,12 @@
+{
+  "keyword": "키워드",
+  "label.host": "호스트명",
+  "label.port": "포트",
+  "label.httpAuth": "HTTP 인증",
+  "label.index": "index",
+  "label.types": "types",
+  "label.query-string": "단순질의(q)",
+  "label.query-object": "질의객체(body)",
+  "label.log": "log",
+  "label.period": "주기"
+}
