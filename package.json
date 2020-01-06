@@ -1,7 +1,7 @@
 {
   "name": "@things-scene/elasticsearch",
   "description": "elasticsearch component for things-scene",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "src/index.js",
   "module": "dist/things-scene-elasticsearch.mjs",
   "jsnext:main": "dist/things-scene-elasticsearch.mjs",
